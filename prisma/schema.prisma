@@ -12,7 +12,7 @@ datasource db {
 
 model User {
   id        Int     @id @unique @default(autoincrement())
-  email     String
+  email     String  @unique
   hash      String
   firstName String?
   lastName  String?
