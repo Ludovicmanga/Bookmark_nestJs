@@ -11,12 +11,19 @@ datasource db {
 }
 
 model User {
-  id Int @unique
-  email String
+  id        Int     @id @unique @default(autoincrement())
+  email     String
+  hash      String
+  firstName String?
+  lastName  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
-model Working {
-  id Int @unique
-  email String
+model Bookmark {
+  id          Int     @id @unique @default(autoincrement())
+  title       String
+  description String?
+  link        String
 }
-
