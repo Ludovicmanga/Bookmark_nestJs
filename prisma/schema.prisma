@@ -11,11 +11,12 @@ datasource db {
 }
 
 model User {
-  id        Int     @id @unique @default(autoincrement())
-  email     String  @unique
+  id        Int        @id @unique @default(autoincrement())
+  email     String     @unique
   hash      String
   firstName String?
   lastName  String?
+  bookmarks Bookmark[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
@@ -26,4 +27,6 @@ model Bookmark {
   title       String
   description String?
   link        String
+  User        User    @relation(fields: [UserId], references: [id], onDelete: Cascade)
+  UserId      Int
 }
